@@ -1,0 +1,596 @@
+### DustShield Kathmandu — Full Project Audit & Development Report
+
+Project tagline: Detect the source. Map the problem. Take action.
+
+My recommendation is to build DustShield Kathmandu as one web application with three connected modules:
+
+* DustGuard — monitor and assess dust-control practices at construction sites.
+
+* DustMap — collect citizen reports and identify repeated dust hotspots.
+
+* CleanRoad — help prioritise road cleaning and municipal inspections.
+
+The central innovation is the Dust Priority Intelligence system: instead of merely displaying complaints, the application ranks locations that may need attention first.
+
+This is a project-design audit and implementation plan, not an official environmental compliance audit.
+
+### 1\. Project audit: what are we actually building?
+
+### DustShield Kathmandu
+
+![Air Pollution: Envirosuite responds to the EU Commission’s proposal for cleaner ambient air by 2030 | WMW](https://images.openai.com/static-rsc-4/t5tGS_cCfhV3x4ecSIi0zMSuSuGc7xsUvVo4hoz6ngUqutScBYu7AU896CrfUCPgWp_mT4K6s2UZIsX5klBtpR1Oa3uVet0Ih-zYrlEJz0ze0d80qFsWHwcjk7QZfqQxPwq4mw0h0pHIk1W8Re7FB1Z_gu7YThMYauhiwEL92eDBwKmd1AxRl0X5xHFQ4RR_?purpose=fullsize)
+
+PRIMARY USERS
+
+Citizens and inspectors
+
+PLATFORM
+
+Responsive web application
+
+BACKEND
+
+Python + Flask
+
+DATABASE
+
+SQLite for MVP
+
+### The problem
+
+Dust-generating activities can include:
+
+* Construction sites without adequate dust-control practices.
+
+* Uncovered sand, soil and construction materials.
+
+* Dust from road excavation and repair.
+
+* Construction waste left near roads.
+
+* Roads that remain dusty after construction activity.
+
+The problem is not simply that dust exists. It is that citizens and inspectors need a practical way to document its sources, identify repeated problems and follow up on corrective action.
+
+### Proposed solution
+
+| Problem                                           | DustShield feature    | Result                    |
+| ------------------------------------------------- | --------------------- | ------------------------- |
+| Citizens cannot easily document a problem         | DustMap reporting     | Location-based reports    |
+| Construction dust controls are difficult to track | DustGuard checklist   | Recorded site assessments |
+| Repeated dust problems are hard to prioritise     | Priority Intelligence | Ranked hotspots           |
+| Cleaning and inspections need coordination        | CleanRoad             | Action tracking           |
+| Nobody can see whether action was taken           | Before/after evidence | Visible progress          |
+
+### What makes it different?
+
+A normal complaint application collects reports.
+
+DustShield connects the complete process:
+
+1\. Report
+
+Citizen or inspector submits a dust observation
+
+2\. Assess
+
+Construction dust-control checklist
+
+3\. Prioritise
+
+Rank repeated and unresolved hotspots
+
+4\. Take action
+
+Inspection, road cleaning or corrective action
+
+5\. Verify
+
+Upload evidence and update report status
+
+### 2\. Complete feature audit
+
+I recommend separating essential features from optional features. Do not attempt to build everything at once.
+
+| Feature                    | Purpose                                | Priority    |
+| -------------------------- | -------------------------------------- | ----------- |
+| Admin dashboard            | Overall system overview                | Must have   |
+| Citizen registration/login | Identify report submitters             | Must have   |
+| Dust report submission     | Submit description, photo and location | Must have   |
+| Hotspot map                | Display reported locations             | Must have   |
+| Construction checklist     | Assess dust-control practices          | Must have   |
+| Priority scoring           | Rank locations for attention           | Must have   |
+| Inspection dashboard       | Review and update reports              | Must have   |
+| Before/after photographs   | Document corrective action             | Must have   |
+| Analytics and charts       | Show project performance               | Should have |
+| Notification system        | Notify users about updates             | Later       |
+| Live PM2.5/PM10 sensor     | Actual particulate measurement         | Optional    |
+| AI image detection         | Automatically identify visible dust    | Future      |
+
+Important: A photograph or citizen complaint does not measure PM2.5 or PM10. Your application must distinguish between an observed dust hotspot and a sensor-measured pollution reading.
+
+### 3\. Tools and technology required
+
+You do not need expensive equipment or a complicated technology stack.
+
+### Recommended technology stack
+
+![File:Python logo 01.svg - Wikimedia Commons](https://images.openai.com/static-rsc-4/yeA_Sn9cJquS9otkiMxhtuZj_TuNlf-mhSP8Dq9qS96E0c941JmqEl3OdXmXK1zB5Mb6yHrNM6VsdwiW9uBWtsSjw873uFptIOvYOi1z6xqvKmfIMwsDvPZzd6hP32N6chA1io34psqg-Gvf-HC6li2Y4cWscfgHxcZKQae7Q_OJEw0FGQdUKzx9NZ2fPFx8?purpose=fullsize)
+
+Python
+
+Main programming language; scoring and application logic.
+
+Core
+
+![Flask Logo PNG Vector (SVG) Free Download](https://images.openai.com/static-rsc-4/XDKOIUZ4jtN7WBzHoBRncqrX6FCcEzFIi_rcb1HALScy8RFVPhdGM1bfPuDS1FIzgNgYGVAhKv4tE6WbkEzkEM_FIdGIbGK8FTPOvBqw1lfM1gsRhG3BjK9dbaFkKKGjjFpfOrggznVHOdjolAtDzWxU6Dw299eGCyKi81z1gyitQwvr5KqtbSHUr61dJ6pB?purpose=fullsize)
+
+Flask
+
+Backend, routes, login and APIs.
+
+Core
+
+![Day-11:Building an Age Category Checker using JavaScript If-Else Statements. - DEV Community](https://images.openai.com/static-rsc-4/Cb4JSoFUqYX1q8KLyP6K-QBVi4FmkwWLMrI9TL3EdW6S6nxKbNFm7FtEJ3R4vJEohc7REV0WS6Dx1a2pGH0yaeXVNLFN7Rmr6TSV80DQEpdQ3NsJoeXzrZ9ciD7Ll-nLegMNz_gEmO551vsD0_iyIsLZcrTB4ecLCr9T6ZXfFrnJzatmlXc9hqgWYPFk72ar?purpose=fullsize)
+
+HTML, CSS and JavaScript
+
+Frontend and interactive interface.
+
+Core
+
+![Logo SQLite – Logos PNG](https://images.openai.com/static-rsc-4/RF2fVezvDvUK8owIdiEVPtgy-j6I6lYcTNmEZy2H635AjF-Z-woBqqzkLyCBErtIvLPsfEgReoB9ZfdMGSQcpccN8cW0NJimZP1pbb7fTY1appSVbxjK9jSFcQ3MKUMEfoepxc7BYmwP9nPmCVDhhiFKINIshg-GxLTPyowxSSVxEwAkauqa1fJ3prWtTqK1?purpose=fullsize)
+
+SQLite
+
+Stores users, reports, assessments and actions.
+
+Core
+
+![Leaflet PNG Logo — Download Free Transparent Logo](https://images.openai.com/static-rsc-4/Mtpq5NkxvkDdjFvMT6Q9fV46VVqiETz5rDcJtEiSPBt_KNqfHOBbbk3OX3mfAT9LgiUklk1PAtoGUVT_9-ALfQGKtHZ8P8xvHAX1Aq33LxeDroCQq0G5NuXctobuJjr5wrSjBNAQUD5q04K2IMgBw6JQjAa7VMASvH5QMAKNdtUzD7wGq30x9-LvzCvHOXPk?purpose=fullsize)
+
+Leaflet + OpenStreetMap
+
+Interactive map and report markers.
+
+Core
+
+![Chart.js Logo PNG Vector (SVG) Free Download](https://images.openai.com/static-rsc-4/rKuycVm1LqToRSBrDZp7cN4YWH9Wl2FD10RZhLX_f_-E4LIs3hY0P8JbTlmp_yyYumsoNHp_j2jrUsSV4jeVKGYuOgrZejU1fD3W1lV3bWAeuLcYPRW0vk4Jd39smFOdtSR91Rxrm8wA7SdPQOKEIXx2BnPqlDh8JcCG3WU8LjjoVyGzWcfvJti2j1NAh0Cv?purpose=fullsize)
+
+Chart.js
+
+Dashboard charts and analytics.
+
+Recommended
+
+### Additional development tools
+
+| Tool             | Why you need it                       |
+| ---------------- | ------------------------------------- |
+| VS Code          | Write and manage code                 |
+| Git + GitHub     | Version control and backup            |
+| Figma            | Plan the GUI before coding            |
+| Bootstrap 5      | Responsive layout and components      |
+| Flask-Login      | User authentication                   |
+| Flask-SQLAlchemy | Database management                   |
+| Werkzeug         | Password hashing and secure utilities |
+| Pillow           | Image processing and validation       |
+| Python datetime  | Report dates and unresolved duration  |
+
+You can use Bootstrap or custom CSS. I would choose Bootstrap 5 with custom CSS to save development time while keeping the design professional.
+
+### 4\. Architecture: how the application will work
+
+![Flask and SQLite: Consuming API Endpoints with Python Requests](https://images.openai.com/static-rsc-4/9YPAPlhKHqDxlRXnUuyVpD3aphIBCIqteKfO7Aaff6jJWE7qsLww2LWRiHME8yfoUv3BUrkWIYzBTFqss21vc8BUxmZhkwauv-5A5lXgRO6kY6V6p1XGXxqxHiSjy3nSYck7KjkYKvsdmsF4k1MTr4npEkMBUSaVuB5KJSbNx4zc1l4bhB91-0VHqk_lRdI1?purpose=fullsize)
+
+Your application architecture should be:
+
+```text
+              DUSTSHIELD KATHMANDU
+                       |
+              HTML / CSS / JS
+                       |
+             Flask Application
+                       |
+       +---------------+---------------+
+       |               |               |
+    DustGuard        DustMap        CleanRoad
+       |               |               |
+       +---------------+---------------+
+                       |
+               Priority Engine
+                       |
+                 SQLite Database
+                       |
+              Municipal Dashboard
+```
+
+### Suggested project folder structure
+
+Create this structure from the beginning:
+
+```text
+dustshield/
+│
+├── app.py
+├── config.py
+├── requirements.txt
+│
+├── models/
+│   ├── __init__.py
+│   ├── user.py
+│   ├── report.py
+│   ├── assessment.py
+│   └── action.py
+│
+├── routes/
+│   ├── auth.py
+│   ├── dashboard.py
+│   ├── reports.py
+│   ├── dustguard.py
+│   ├── cleanroad.py
+│   └── api.py
+│
+├── services/
+│   └── priority_engine.py
+│
+├── templates/
+│   ├── base.html
+│   ├── dashboard.html
+│   ├── reports.html
+│   ├── report_form.html
+│   ├── dustguard.html
+│   ├── cleanroad.html
+│   └── login.html
+│
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── dashboard.js
+│   │   └── map.js
+│   └── images/
+│
+├── uploads/
+│
+└── instance/
+    └── dustshield.db
+```
+
+You can simplify this if the initial application feels too large. The important thing is to keep the user interface, database models and scoring logic separate.
+
+### 5\. GUI design — start here today
+
+Since you are beginning the GUI now, build the municipal dashboard first. It gives you the visual foundation for the whole application.
+
+### Recommended dashboard layout
+
+![Building a Smart Environmental Monitoring System with Google Cloud (Inspired by NEXT ‘26) - DEV Community](https://images.openai.com/static-rsc-4/GZwz4J7ytCLMWNheUyq6EzY84tD9DcjpxqMs4IecGlAdopQPmIa6wfoKRGGKnx_7TRRk99OaudCv7ycHLEjCo1BvcMfJqkaGy9ZNJXk20EPnEs00Yhfq2nHc__5ZnJ_R5XQuSacG3Amvg5WfhLxRwTpliCrYGOhK9LHuMEyG5qraCGRudUlRLpZ7FjMImDYf?purpose=fullsize)
+
+### Main sidebar
+
+Your sidebar should contain:
+
+* Overview
+
+* Dust Reports
+
+* Hotspot Map
+
+* Construction Assessment
+
+* Road Cleaning
+
+* Priority Intelligence
+
+* Analytics
+
+* User Management
+
+* Settings
+
+### Dashboard main area
+
+DustShield Dashboard
+
+Illustrative UI
+
+Sample values only — not real Kathmandu statistics.
+
+### 24
+
+Total reports
+
+### 8
+
+Reported hotspots
+
+### 6
+
+Pending inspections
+
+### 16
+
+Actions completed
+
+Priority locations
+
+Location A
+
+High priority
+
+Repeated construction dust reports
+
+Location B
+
+Medium priority
+
+Road dust and unresolved complaint
+
+These are illustrative interface examples, not verified locations or measurements.
+
+### The other GUI pages
+
+![How to submit a request through our 311 system called Hey311](https://images.openai.com/static-rsc-4/aXEkjXGAAe3Y736VT3jzriLHAvRRedWYB-EaVCRGdHEB2uvdtGZfyPBhw2SjH7H6ru3P1DZ4AuoQ91BC9cWFxWX63JamRlWPAKO0NMeayzL3ESD6ge5dW_e8CXNCiAhpbpZUV0-vpfHOkvTZLPg-Wvu5f937XqhbSjxgjUW0c-dGT7d_590bpyITBAPUnTrY?purpose=fullsize)
+
+1\. Report Dust
+
+* Report category
+
+* Description
+
+* Photograph upload
+
+* Location selection
+
+* Submit report
+
+![New maps in the cloud with HERE XYZ! | Stamen](https://images.openai.com/static-rsc-4/m49f6Ig9WG7DNy3cEF4SVPoErJoaRePj2Q5UTaiEAwreCjBtSe8tc2knRAXH_Izu2hpKU065on6R1t1k9tHjyMV8EoWPq2ebX4Cu-LklV_urMZIL4VlibpbW0AZS_9hg032hOvYKzTeP6qZznB9EaHdN4Mf-o3vTo-nUTiL77k48SBeDwHV52oA6LPDoSWi_?purpose=fullsize)
+
+2\. Hotspot Map
+
+* Map of Kathmandu
+
+* Report markers
+
+* Severity indicators
+
+* Filters by status and category
+
+![Constructable - Project Management](https://images.openai.com/static-rsc-4/_d3NfCGEhMDdcmHjPAXs04MrCvAT4UI3EhZwTbo2NCNo-q5ThiAHK7wRHPSpXBouhGIJMwqUalxM1kX6xveIbzDxWgujh4E54irZb4gJNVNXJcwlEsf5_-i1kmj4fUuAMqKFYmWCWrLVHy-gpjslOZ0mlPX5Sq9t2ANUqUZ-Vg4m5Jws391pF26RIh29BIxZ?purpose=fullsize)
+
+3\. DustGuard
+
+* Construction-site details
+
+* Five-point checklist
+
+* Assessment score
+
+* Inspector remarks
+
+![Fixly · City operations platform for municipalities](https://images.openai.com/static-rsc-4/r7MzSRLUafXNxFbsXy32L0VrRbaiCneGrSw0Z2ISDhV3iFtcmKlYpJgvfMVXj-xLXa0dH-wlGx0cLo9gcG3l9oWy1ZAAJ7GyorXg8Wh23zEumQ7tD0oBTlTSgnfQZpXVVW7ZCy0ME-7itBefN_QDCa_PEaq6gI2cH6NMqPZE5JYY0OzxMGAa1-Qo9vZcNPTe?purpose=fullsize)
+
+4\. CleanRoad
+
+* Cleaning requests
+
+* Assigned actions
+
+* Pending/completed status
+
+* Before/after photographs
+
+### 6\. Core intelligence: Dust Priority Score
+
+This is the feature I would highlight during your hackathon presentation.
+
+Every reported location gets a priority score from 0 to 100.
+
+P = 0.35S + 0.25F + 0.25D + 0.15U
+
+| Variable | Meaning                  | Range |
+| -------- | ------------------------ | ----- |
+| S        | Observed dust severity   | 0–100 |
+| F        | Frequency of reports     | 0–100 |
+| D        | Duration unresolved      | 0–100 |
+| U        | Urgency of the situation | 0–100 |
+
+Example:
+
+* Severity: 80
+
+* Frequency: 70
+
+* Duration: 90
+
+* Urgency: 60
+
+P=(0.35 \\times 80)+(0.25 \\times 70)+(0.25 \\times 90)+(0.15 \\times 60)
+
+### 76.5 / 100
+
+Illustrative priority score
+
+You can initially use these categories:
+
+| Score  | Priority |
+| ------ | -------- |
+| 0–39   | Low      |
+| 40–69  | Medium   |
+| 70–100 | High     |
+
+These weights and thresholds are initial prototype assumptions, not validated pollution-risk measurements or official municipal standards. Repeated reports should also be checked for duplicates or abuse before they influence priority.
+
+### 7\. Database design
+
+Start with these five database tables.
+
+| Table           | Important fields                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------------ |
+| Users           | id, name, email, password_hash, role                                                                   |
+| Reports         | id, user_id, category, description, photo, latitude, longitude, severity, status, created_at           |
+| Assessments     | id, report_id, covered_materials, waste_contained, covered_trucks, dust_suppression, clean_road, score |
+| Actions         | id, report_id, assigned_to, action_type, remarks, before_photo, after_photo, status, completed_at      |
+| PriorityHistory | id, report_id, priority_score, calculated_at                                                           |
+
+Use roles such as:
+
+* Citizen
+
+* Inspector
+
+* Administrator
+
+Do not store plain-text passwords. Use password hashing and validate uploaded photographs.
+
+### 8\. Physical equipment and estimated budget
+
+No sensor required for MVP
+
+| Item                               | Estimated cost  |
+| ---------------------------------- | --------------- |
+| Laptop (assumed already available) | NPR 0           |
+| Flask, Python, SQLite              | Free            |
+| Leaflet + OpenStreetMap            | Free to start   |
+| VS Code + GitHub                   | Free            |
+| Figma                              | Free tier       |
+| Internet/data                      | NPR 500–1,000   |
+| Field transport                    | NPR 500–1,000   |
+| Printing/demo materials            | NPR 300–500     |
+| Optional PM sensor                 | Additional cost |
+
+My advice: do not purchase a sensor before the application works. You can demonstrate the entire reporting, mapping and prioritisation workflow using real field observations and clearly labelled sample data.
+
+If you later add hardware, investigate an optical particulate sensor such as the PMS5003. It needs suitable power, integration and careful handling; low-cost sensor readings should not be presented as certified air-quality measurements.
+
+### 9\. Development plan
+
+You have a short time before the 28 November hackathon, so build the smallest complete system first.
+
+| Stage | Deliverable                         |
+| ----- | ----------------------------------- |
+| 1     | Dashboard GUI and sidebar           |
+| 2     | Login and user roles                |
+| 3     | Dust report form and image upload   |
+| 4     | Database integration                |
+| 5     | Kathmandu hotspot map               |
+| 6     | Construction assessment checklist   |
+| 7     | Priority scoring engine             |
+| 8     | Municipal action dashboard          |
+| 9     | Before/after evidence and analytics |
+| 10    | Testing, security and presentation  |
+
+Do not spend several days polishing the dashboard before connecting it to the backend. Build the visual layout, then make each page functional.
+
+### 10\. Security audit — an opportunity to demonstrate your cybersecurity knowledge
+
+Because the system stores user information, photographs and location data, include basic security from the beginning.
+
+| Risk                          | Protection                               |
+| ----------------------------- | ---------------------------------------- |
+| Password theft                | Secure password hashing                  |
+| Unauthorised inspector access | Role-based access control                |
+| Malicious file uploads        | File extension, MIME and size validation |
+| SQL injection                 | SQLAlchemy parameterised queries         |
+| Cross-site scripting          | Template escaping and input validation   |
+| CSRF attacks                  | CSRF protection on forms                 |
+| Fake or duplicate reports     | Duplicate review and moderation          |
+| Exposure of private data      | Restrict access to personal information  |
+| Unauthorised changes          | Record action history and timestamps     |
+
+For the hackathon, demonstrate that a citizen cannot access inspector-only functions and cannot change the status of another person's report.
+
+### 11\. What to demonstrate to the judges
+
+Your demo should tell one complete story:
+
+* A citizen notices a dusty construction site.
+
+* They submit a report with a photograph and location.
+
+* The report appears on the Kathmandu hotspot map.
+
+* An inspector opens the site and completes the DustGuard checklist.
+
+* The priority score increases if the problem is repeated and unresolved.
+
+* The municipal dashboard identifies it as a high-priority location.
+
+* An inspector records a corrective action and uploads an after-photo.
+
+* The application updates the report status and records the action.
+
+Your key success metrics should be:
+
+* Number of reports received.
+
+* Number of locations assessed.
+
+* Average construction checklist score.
+
+* Number of unresolved hotspots.
+
+* Number of completed corrective actions.
+
+* Time taken to resolve a report.
+
+Do not claim that DustShield has reduced Kathmandu's air pollution unless you have reliable before-and-after particulate measurements.
+
+### Your first GUI task: build the dashboard
+
+Start with the following design decisions:
+
+Recommended visual identity
+
+DustShield
+
+Kathmandu Environmental Monitoring
+
+Colours
+
+Deep green
+
+Forest
+
+Pale green
+
+Background
+
+Warning
+
+High priority
+
+Layout
+
+* Left sidebar: 240px
+
+* Main dashboard: flexible width
+
+* Header: search, notification and profile
+
+* Main content: four KPI cards, map, priority list and charts
+
+* Responsive: sidebar collapses on mobile
+
+### Your immediate checklist
+
+* Create the `dustshield` folder.
+
+* Create `templates`, `static/css`, `static/js` and `static/images`.
+
+* Create `base.html`.
+
+* Build the sidebar and header.
+
+* Build the four KPI cards.
+
+* Add a placeholder map area.
+
+* Add the priority locations section.
+
+* Make the dashboard responsive.
+
+One important decision before you begin: build the interface for a municipal inspector/admin first, then create a simpler citizen-facing reporting interface. This gives your project a clear professional dashboard and keeps the first development stage manageable.
+
+When you finish your first GUI, send me a screenshot. I can audit the layout, usability, colours and navigation before we connect it to Flask and SQLite.
